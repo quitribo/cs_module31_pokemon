@@ -14,7 +14,7 @@ router.get("/pokemons", function (req, res, next) {
     console.log("page", page); //undefined
     console.log("limit", limit);
     console.log("filterQuery", filterQuery); // {type: "grass", name:"lala", haha:"lala"}
-    const allowFilter = ["type", "name"];
+    const allowFilter = ["types", "name"];
 
     //check if filterQuery match allowFilterQuerry
     for (let key of Object.keys(filterQuery)) {

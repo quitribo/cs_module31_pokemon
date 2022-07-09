@@ -2,6 +2,9 @@ const fs = require("fs");
 const csv = require("csvtojson");
 const { start } = require("repl");
 
+require("dotenv").config();
+const PORT = process.env.PORT;
+
 const createProduct = async () => {
   let newData = await csv().fromFile("./datasets/pokemon2.csv"); // this is an array
   // let newData = await csv().fromFile("./datasets/Pokemon.csv"); // this is an array
@@ -15,7 +18,7 @@ const createProduct = async () => {
         name: e.Name,
         types: [e.Type1?.toLowerCase(), e.Type2?.toLowerCase()],
         // types: [e.Type1, e.Type2],
-        url: `http://localhost:3000/pokepic/${index + 1}.jpg`,
+        url: `http://localhost:${PORT}/pokepic/${index + 1}.jpg`,
       };
     })
     .filter((e) => e.name !== "")
